@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic.list import ListView
 from .models import Book, Category
 
@@ -14,4 +13,15 @@ class BookListView(ListView):
         return context
 
     def get_queryset(self):
+        name_query = self.request.GET.get('name')
+        category_query = self.request.GET.get('category')
+        if category_query:
+            category = Category.objects.filter(
+                name__icontains=category_query).first()
+            if name_query:
+                return Book.objects.filter(
+                    name__icontains=name_query, category=category)
+            return Book.objects.filter(category=category)
+        if name_query:
+            return Book.objects.filter(name__icontains=name_query)
         return Book.objects.all()
