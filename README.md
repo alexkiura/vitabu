@@ -45,6 +45,6 @@ Run the server
 python manage.py runserver
 ```
 
-Add some sample books on the [admin](localhost:8000/admin/) page
+Add some sample books on the [admin](http://localhost:8000/admin/) page
 
-Test out the search functionality [here](localhost:8000/)
+Test out the search functionality [here](http://localhost:8000/)
