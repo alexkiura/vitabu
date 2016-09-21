@@ -1,5 +1,5 @@
-from django.views.generic.list import ListView
-from .models import Book, Category
+from django.views.generic.list import ListView # pragma: no cover
+from .models import Book, Category # pragma: no cover
 
 
 class BookListView(ListView):
