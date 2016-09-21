@@ -6,6 +6,8 @@
   <li class="list-group-item"><strong>Book name</strong><span class="pull-right"><strong>Book category</strong></span></li>
   {% for book in books %}
   <li class="list-group-item">{{ book.name }} <span class="pull-right">{{ book.category }}</span></li>
+  {% empty %}
+  <li class="list-group-item">No such book exists</li>
   {% endfor %}
 </ul>
 {% endblock %}
