@@ -13,12 +13,12 @@ class TestBookView(TestCase):
     def test_view_with_no_books(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.context['boks']), 0)
+        self.assertEqual(len(response.context['books']), 0)
 
     def test_view_with_created_book(self):
         fiction_book = create_test_book(
             name='Harry Potter', category=self.test_category)
-        response = self.get('/')
+        response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['books']), 1)
         self.assertEqual(response.context['books'][0], fiction_book)
@@ -27,7 +27,7 @@ class TestBookView(TestCase):
         fiction_book = create_test_book(
             name='Harry Potter', category=self.test_category)
         response = self.client.get('/?name=harry')
-        self.assertEqual(response.context['books'], 1)
+        self.assertEqual(len(response.context['books']), 1)
         result = response.context['books'][0]
         self.assertEqual(result.name, fiction_book.name)
 
